@@ -1,1 +1,2 @@
 # Flower-Shop-E-commerce-Platform
+An e-commerce platform allowing users to browse products, add to cart, and checkout via Credit Card or Orange Money. Features include product categories, advanced search, user profile management, order history, and payment processing. Admins can manage products, categories, and user data via a dashboard. Additional features: voice search, discount vouchers, social media sharing, face login, real-time chat with admins, website translation, and product sharing on Facebook.
