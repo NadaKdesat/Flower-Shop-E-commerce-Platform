@@ -1,0 +1,209 @@
+/* Main Heading */
+.main-title {
+  color: #E72463;
+  font-weight: bold;
+}
+
+/* Table Styling */
+.flower-table {
+  background-color: #fff5f2;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+  .flower-table th,
+  .flower-table td {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 16px;
+  }
+
+.table-header {
+  background-color: #E72463;
+  color: white;
+}
+
+/* Form Select Dropdown */
+.form-select {
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #e3e3e3;
+  width: 140px;
+  transition: all 0.3s ease;
+}
+
+  .form-select:focus {
+    border-color: #E72463;
+    box-shadow: 0 0 0 0.15rem rgba(231, 36, 99, 0.25);
+  }
+
+/* Optional Button Styles (if you use them) */
+.btn-orange {
+  background-color: #E72463;
+  color: white;
+  border: none;
+  margin: 0.5vw;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+  .btn-orange:hover {
+    background-color: #BF2C5C;
+    color: white;
+  }
+
+.btn-red-outline {
+  border: 2px solid #dc3545;
+  color: #dc3545;
+  background-color: transparent;
+  margin: 0.5vw;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+  .btn-red-outline:hover {
+    background-color: #BF2C5C;
+    color: white;
+  }
+/* 🌸 شكل البوب أب */
+.modal-content {
+  background: linear-gradient(to bottom right, #ffffff, #fff0f5);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+  max-width: 950px;
+  margin: auto;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  border: none;
+}
+
+/* 🌼 توزيع صفين */
+.modal-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 40px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* عرض العناصر على كامل الصف */
+.modal-body h5,
+.modal-body img.img-fluid,
+.modal-body .border.rounded.p-2,
+.modal-body > div[ng-reflect-ng-if]:not(:has(img)) {
+  grid-column: span 2;
+}
+
+/* 🌈 عناوين */
+.modal-body p {
+  margin: 0;
+  font-size: 15px;
+  color: #222;
+}
+
+.modal-body p strong {
+  color: #e91e63;
+}
+
+/* ✨ عنوان المنتجات */
+.modal-body h5 {
+  font-size: 22px;
+  color: #e91e63;
+  font-weight: 600;
+  border-bottom: 2px solid #f8bbd0;
+  padding-bottom: 6px;
+  text-align: center;
+  margin-top: 25px;
+}
+
+/* 🧺 كروت المنتجات */
+.modal-body .border.rounded.p-2 {
+  background: #fff0f7;
+  border: 1px solid #f8bbd0;
+  border-left: 6px solid #e91e63;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 18px;
+  transition: background 0.3s ease;
+}
+
+.modal-body .border.rounded.p-2:hover {
+  background: #ffe6f0;
+}
+
+/* 📸 صور (منتجات أو إيصال) */
+.modal-body img {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+}
+
+.modal-body img:hover {
+  transform: scale(1.05);
+}
+
+/* 📸 Lightbox */
+.image-lightbox {
+  position: fixed;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.8);
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.image-lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border: 4px solid white;
+  border-radius: 10px;
+}
+.modal-body img.img-fluid {
+  display: block;
+  margin: 5px auto 15px auto;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 2px solid #f8bbd0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.modal-body p:nth-of-type(n) {
+  text-align: left;
+}
+
+.receipt-fixed-wrapper > p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  color: #e91e63;
+  margin-bottom: 8px;
+  position: relative;
+  display: inline-block; /* يجعل النص يأخذ عرضه الطبيعي */
+}
+
+  .receipt-fixed-wrapper > p::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* تمركز أفقي دقيق */
+    bottom: -4px;
+    width: 100%; /* الخط بطول النص بالكامل */
+    height: 2px;
+    background: #e91e63;
+  }
+
+.receipt-fixed-wrapper img {
+  display: block;
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto; /* تمركز الصورة */
+}

@@ -1,0 +1,21 @@
+
+<br />
+<br />
+<br />
+<div class="box-wrapper">
+  <div class="box" [class.opened]="boxOpened" (click)="openBox()">
+    <div class="lid"></div>
+    <div class="front"></div>
+  </div>
+
+  <div *ngIf="showResult" class="popup">
+    🎉 You got <strong>{{ selectedDiscount }}</strong> discount!
+    <button (click)="closePopup()">Close</button>
+
+  </div>
+</div>
+
+<button class="open-btn" (click)="openBox()" [disabled]="isOpening">🎁 Open Surprise Box</button>
+<br />
+<br />
+<br />

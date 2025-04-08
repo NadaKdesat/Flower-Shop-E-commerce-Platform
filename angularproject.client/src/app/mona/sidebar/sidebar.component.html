@@ -1,0 +1,28 @@
+  <!-- Sidebar -->
+<nav class="sidebar shadow-sm">
+  <div class="sidebar-header text-center py-4" routerLink="/dashboard/dashboardcontent">
+    <img src="https://cdn-icons-png.flaticon.com/512/7662/7662064.png" alt="Bloomora Logo"
+         width="50" class="mb-2"
+         style="background-color: white; padding: 5px; border-radius: 50%; box-shadow: 0 0 6px rgba(0,0,0,0.1);">
+    <h5 class="text-white mb-0">Bloomora</h5>
+    <small style="color: #ffdbe8;">Admin Panel</small>
+  </div>
+
+  <ul class="nav flex-column mt-4">
+    <li class="nav-item"><a class="nav-link" routerLink="/dashboard/users"><i class="bi bi-people-fill me-2"></i> Users</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/dashboard/vouchers"><i class="bi bi-ticket-perforated-fill me-2"></i> Vouchers</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/dashboard/feedback"><i class="bi bi-chat-left-text-fill me-2"></i> Feedback</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/dashboard/Orders"><i class="bi bi-bag-fill me-2"></i> Orders</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/dashboard/AllCategories"><i class="bi bi-tags-fill me-2"></i> Categories</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/dashboard/allproducts"><i class="bi bi-box-fill me-2"></i> Products</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/dashboard/adminChat"><i style=" margin-right: 9px;" class="bi bi-chat-left-heart-fill"></i> Chat</a></li>
+
+    <li class="nav-item">
+      <a class="nav-link" (click)="logout()" style="cursor: pointer;">
+        <i class="bi bi-box-arrow-left me-2"></i> Logout
+      </a>
+    </li>
+
+  </ul>
+</nav>
+

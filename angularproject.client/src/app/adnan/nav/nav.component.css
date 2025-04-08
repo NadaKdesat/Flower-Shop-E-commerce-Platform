@@ -1,0 +1,64 @@
+.main-nav {
+  display: flex; /* استخدام Flexbox */
+  justify-content: space-between; /* توزيع المسافة بين العناصر */
+  align-items: center; /* محاذاة العناصر في المنتصف عمودياً */
+  width: 100%; /* جعل الناف بار يأخذ عرض الصفحة كاملاً */
+}
+
+  .main-nav > ul {
+    display: flex; /* تحديد القائمة لاستخدام Flexbox */
+    list-style: none; /* إزالة نقاط التعداد النقطي */
+    padding: 0; /* إزالة الpadding الافتراضي */
+  }
+
+    .main-nav > ul > li {
+      margin-right: 20px; /* تحديد مسافة بين العناصر */
+    }
+
+#google_translate_element {
+  margin-right: -130px; /* دفع عنصر الترجمة لليسار */
+}
+/* In your component's CSS file or in global styles */
+.swal2-confirm {
+  background-color: #E72463 !important; /* Use !important to override default styles */
+  color: white; /* Optional: change text color */
+  border: none; /* Optional: removes border */
+}
+.fa-bars:before {
+  content: "";
+}
+
+@media(max-width:1000px) {
+  .fa-bars:before {
+    content: "\f0c9";
+    position: absolute;
+    right: 20px;
+    top: 50px;
+  }
+}
+
+.off-canvas-wrapper.open .off-canvas-inner-content {
+  text-align: left;
+}
+
+.main-nav > ul > li {
+  display: inline-block;
+  position: relative;
+  padding: 45px 0px 0px 0px;
+}
+
+.no-border-box,
+.no-border-box * {
+  box-sizing: content-box;
+}
+
+/* Scroll behavior adjustment */
+.main-header-area {
+  transition: all 0.3s ease-in-out;
+  padding: 10px 0 !important;
+}
+
+  .main-header-area.scrolled {
+    padding: 5px 0 !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* optional: slight shadow on scroll */
+  }

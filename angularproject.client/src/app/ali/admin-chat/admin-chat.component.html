@@ -1,0 +1,77 @@
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="chat-container">
+  <div *ngFor="let msg of messages"
+       class="chat-message position-relative"
+       [ngClass]="msg.sender === 'admin' ? 'from-admin' : 'from-user'"
+       (mouseenter)="msg.hover = true"
+       (mouseleave)="msg.hover = false">
+
+    <!-- صورة -->
+    <img class="avatar"
+         [src]="msg.sender === 'admin' ? userAvatar : getUserImage(msg.userId)"
+         alt="avatar" />
+
+    <!-- محتوى الرسالة -->
+    <div class="content">
+      <div class="username">
+        {{ msg.sender === 'admin' ? 'Admin' : getUserName(msg.userId) }}
+      </div>
+
+      <div class="text">{{ msg.message }}</div>
+
+      <img *ngIf="msg.image" [src]="msg.image" class="chat-image" />
+    </div>
+
+    <!-- زر الإضافة عند التمرير -->
+    <button *ngIf="msg.hover && msg.sender !== 'admin'"
+            class="add-to-cart-btn"
+            (click)="openAddToCart(msg)">
+      ➕
+    </button>
+  </div>
+
+  <!-- إدخال رسالة -->
+  <div class="input-area">
+    <textarea [(ngModel)]="newMessage" placeholder="Type your message..."></textarea>
+    <input type="file" (change)="onFileSelected($event)" />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>
+
+<!-- نافذة الطلب الخاص -->
+<!-- Modal Overlay -->
+<!-- ✅ Popup Modal لمنتج مخصص -->
+<div class="modal-overlay" *ngIf="showCustomForm">
+  <div class="modal-content">
+    <h4 style="margin-bottom: 10px;">Add Custom Product to Cart</h4>
+
+    <input type="text" placeholder="Product Name" [(ngModel)]="customProductName" class="input-popup">
+    <input type="number" placeholder="Price" [(ngModel)]="customProductPrice" class="input-popup">
+
+    <!-- ✅ رفع صورة المنتج -->
+    <label class="upload-label">
+      Upload Product Image
+      <input type="file" (change)="onCustomProductImageSelected($event)" accept="image/*">
+    </label>
+
+    <input type="number" placeholder="Quantity" [(ngModel)]="customProductQuantity" class="input-popup">
+
+    <div class="modal-actions">
+      <button class="btn-confirm" (click)="addCustomProductToCart()">Add to Cart</button>
+      <button class="btn-cancel" (click)="showCustomForm = false">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+

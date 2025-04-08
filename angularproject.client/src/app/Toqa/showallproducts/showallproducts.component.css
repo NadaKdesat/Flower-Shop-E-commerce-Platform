@@ -1,0 +1,110 @@
+.flower-heading,
+.main-title {
+  color: #E72463;
+  font-weight: bold;
+}
+
+
+.flower-table {
+  background-color: #fff5f2;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+  .flower-table th,
+  .flower-table td {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 16px;
+  }
+
+/* Custom Orange Button */
+.btn-orange {
+  background-color: #E72463;
+  color: white;
+  border: none;
+  margin-right: 0.5vw;
+  margin: 0.5vw 0.5vw 0.5vw 0.5vw;
+  padding: 8px;
+}
+
+  .btn-orange:hover {
+    background-color: #BF2C5C;
+    color: white;
+  }
+
+
+.btn-red-outline {
+  border: 2px solid #dc3545;
+  color: #dc3545;
+  background-color: transparent;
+  margin-right: 0.5vw;
+  margin: 0.5vw 0.5vw 0.5vw 0.5vw;
+  padding: 8px;
+}
+
+  .btn-red-outline:hover {
+    background-color: #BF2C5C;
+    color: white;
+  }
+
+
+.table-header {
+  background-color: #E72463;
+  color: white;
+}
+
+
+.badge.bg-pink {
+  background-color: #E72463;
+  color: white;
+  font-size: 13px;
+  border-radius: 15px;
+  padding: 5px 10px;
+  width: 104px;
+}
+
+
+
+
+/ Center modal properly using Bootstrap defaults /
+.modal-dialog {
+  max-width: 500px;
+  margin: 1.75rem auto;
+}
+
+/ Modal content bloomora style /
+.modal-content {
+  background-color: #fff5f2;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+}
+
+/ Modal backdrop /
+.modal-backdrop.fade.show {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/ Close button style */
+.btn-close {
+  filter: invert(1);
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.btn-secondary {
+  background-color: dimgrey
+}
+
+
+.custom-btn {
+  background-color: #E72463;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+  .custom-btn:hover {
+    background-color: #D45D63;
+  }

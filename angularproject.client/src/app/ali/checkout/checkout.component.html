@@ -1,0 +1,171 @@
+<br />
+<br />
+<br />
+
+<div class="checkout-container">
+  <h2>Checkout</h2>
+
+  <div class="checkout-form">
+    <!-- معلومات التوصيل -->
+    <div class="form-section">
+      <h3>📍 Delivery Information</h3>
+
+      <div class="form-group">
+        <label for="recipientName">Recipient Name:</label>
+        <input type="text"
+               id="recipientName"
+               [(ngModel)]="recipientName"
+               placeholder="Enter recipient name"
+               class="form-input"
+               required />
+      </div>
+
+      <div class="form-group">
+        <label for="address">Delivery Address:</label>
+        <input type="text"
+               id="address"
+               [(ngModel)]="location"
+               placeholder="Enter delivery address"
+               class="form-input"
+               required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Recipient Phone Number:</label>
+        <input type="text"
+               id="phone"
+               [(ngModel)]="phoneNumber"
+               placeholder="Enter phone number"
+               class="form-input"
+               required />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="deliveryDate">📅 Delivery Date:</label>
+      <input type="date"
+             id="deliveryDate"
+             lang="en-GB"
+             [(ngModel)]="deliveryDate"
+             class="form-input"
+             required />
+    </div>
+
+    <div class="form-group">
+      <label for="deliveryTime">⏰ Delivery Time:</label>
+      <input type="time"
+             id="deliveryTime"
+             [(ngModel)]="deliveryTime"
+             class="form-input"
+             required />
+    </div>
+
+    <!-- طرق الدفع -->
+    <div class="form-section">
+      <h3>💳 Payment Method</h3>
+
+      <div class="payment-options">
+        <label>
+          <input type="radio"
+                 name="paymentMethod"
+                 [(ngModel)]="paymentMethod"
+                 value="Orange Money"
+                 required />
+          Orange Money
+        </label>
+
+        <label>
+          <input type="radio"
+                 name="paymentMethod"
+                 [(ngModel)]="paymentMethod"
+                 value="Credit Card"
+                 required />
+          Credit Card
+        </label>
+
+        <label>
+          <input type="radio"
+                 name="paymentMethod"
+                 [(ngModel)]="paymentMethod"
+                 value="Cash on Delivery"
+                 required />
+          Cash on Delivery
+        </label>
+      </div>
+
+      <!-- فورم الدفع - بطاقة -->
+      <div *ngIf="paymentMethod === 'Credit Card'" class="payment-form">
+        <div class="form-group">
+          <label>Card Number:</label>
+          <input type="text"
+                 placeholder="XXXX-XXXX-XXXX-XXXX"
+                 class="form-input"
+                 autocomplete="off" />
+        </div>
+        <div class="form-group">
+          <label>Expiry Date:</label>
+          <input type="text" placeholder="MM/YY" class="form-input" />
+        </div>
+        <div class="form-group">
+          <label>CVV:</label>
+          <input type="text" placeholder="123" class="form-input" />
+        </div>
+      </div>
+
+      <!-- فورم الدفع - Orange Money -->
+      <div *ngIf="paymentMethod === 'Orange Money'" class="payment-form">
+        <div class="form-group">
+          <label><strong>Pay to Orange Money Number:</strong></label>
+          <p style="color: green; font-weight: bold">0777785218</p>
+          <p>Please upload a screenshot of the payment receipt below:</p>
+          <input type="file"
+                 (change)="onOrangeMoneyImageSelected($event)"
+                 accept="image/*"
+                 class="form-input"
+                 [required]="paymentMethod === 'Orange Money'" />
+        </div>
+
+        <!-- ✅ عرض الصورة بعد الرفع -->
+        <div *ngIf="orangeMoneyImageUrl" class="form-group">
+          <p>✅ Payment screenshot uploaded successfully:</p>
+          <img [src]="orangeMoneyImageUrl"
+               alt="Receipt Image"
+               style="max-width: 200px; border: 2px solid #28a745; padding: 4px; border-radius: 10px" />
+        </div>
+
+        <!-- ملاحظة إضافية -->
+        <div class="form-group">
+          <small class="text-warning">
+            ⚠️ Please upload your payment screenshot before placing the order.
+          </small>
+        </div>
+      </div>
+
+      <!-- فورم الدفع - عند التوصيل -->
+      <div *ngIf="paymentMethod === 'Cash on Delivery'" class="payment-form">
+        <div class="form-group">
+          <label>
+            Cash on Delivery selected. You will pay when your order is
+            delivered.
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ملخص الطلب -->
+    <div class="form-section order-summary">
+      <h3>📝 Order Summary</h3>
+      <p><strong>Total Price:</strong> {{ totalPrice | number: '1.2-2' }} JD</p>
+    </div>
+
+    <!-- زر الدفع -->
+    <button (click)="completeOrder()"
+            class="checkout-button btn btn-success w-100 mt-3">
+      💸 Place Order
+    </button>
+  </div>
+</div>
+
+<br />
+<br />
+<br />

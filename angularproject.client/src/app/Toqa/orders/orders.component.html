@@ -1,0 +1,82 @@
+<div class="container mt-5">
+  <h2 class="main-title mb-4">All Orders</h2>
+
+  <table class="table table-hover table-bordered flower-table shadow-sm">
+    <thead class="table-header text-center">
+      <tr>
+        <th>#</th>
+        <th>User</th>
+        <th>Phone Number</th>
+        <th>Total Price</th>
+        <th>Location</th>
+        <th>Status</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders; let i = index" class="text-center">
+        <td>{{ i + 1 }}</td>
+        <td>{{ order.username }}</td>
+        <td>{{ order.phoneNumber }}</td>
+        <td>{{ order.totalPrice | number:'1.2-2' }} JD</td>
+        <td>{{ order.location }}</td>
+
+        <td>
+          <select class="form-select" [(ngModel)]="order.status" (change)="updateStatus(order)" [ngModelOptions]="{ standalone: true }">
+            <option [ngValue]="'Placed'">Placed</option>
+            <option [ngValue]="'On the Way'">On the Way</option>
+            <option [ngValue]="'Delivered'">Delivered</option>
+          </select>
+        </td>
+
+        <td>
+          <button class="btn btn-sm btn-outline-info" (click)="selectedOrder = order" data-bs-toggle="modal" data-bs-target="#orderDetailsModal">
+            📦 View
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ✅ Modal to Show Order Details -->
+<div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Order Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body" *ngIf="selectedOrder">
+
+        <!-- ✅ تفاصيل عامة -->
+        <div class="order-details-grid">
+          <p><strong>Recipient Name:</strong> {{ selectedOrder.recipientName }}</p>
+          <p><strong>Delivery Date:</strong> {{ selectedOrder.deliveryDate }}</p>
+          <p><strong>Delivery Time:</strong> {{ selectedOrder.deliveryTime }}</p>
+          <p><strong>Order Date:</strong> {{ selectedOrder.date | date:'medium' }}</p>
+        </div>
+
+        <!-- ✅ طريقة الدفع وصورة الريسيت -->
+        <div class="receipt-section mt-3" style="margin-bottom:5px">
+          <p style="margin-top: -16px;"><strong>Payment Method:</strong> {{ selectedOrder.paymentMethod }}</p>
+
+          <div *ngIf="selectedOrder.receiptImageUrl">
+            <p><strong>Receipt:</strong></p>
+            <img [src]="selectedOrder.receiptImageUrl" alt="receipt" style="max-width: 100%; border-radius: 10px; border: 1px solid #ccc;">
+          </div>
+        </div>
+
+        <!-- ✅ المنتجات -->
+        <h5 class="mt-4">Products</h5>
+        <div *ngFor="let p of selectedOrder.products" class="border rounded p-2 mb-2">
+          <img [src]="p.img" alt="product image" class="img-thumbnail me-2" width="70">
+          <span><strong>{{ p.name }}</strong> - Qty: {{ p.quantity }} - Price: {{ p.price }} JD</span>
+          <p class="mb-0"><strong>Message:</strong> {{ p.message || 'No message' }}</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

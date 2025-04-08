@@ -1,0 +1,90 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4 flower-heading">
+    <h2 class="main-title mb-0">Categories List</h2>
+    <button class="btn btn-orange" (click)="openCreateModal()">Add Category</button>
+  </div>
+
+  <!-- Category Table -->
+  <table class="table table-hover table-bordered flower-table shadow-sm">
+    <thead class="table-header">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Category Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of CategoryContainer">
+        <th scope="row">{{ category.id }}</th>
+        <td>{{ category.Name }}</td>
+        <td>{{ category.Description }}</td>
+       
+        <td >
+          <button class="btn btn-orange btn-sm me-2" (click)="openEditModal(category)">Edit</button>
+          <button class="btn btn-red-outline btn-sm" (click)="DeleteCategory(category.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Create Category Modal -->
+<div class="modal fade" id="createCategoryModal" tabindex="-1" aria-labelledby="createCategoryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <form class="custom-form shadow" (ngSubmit)="createCategory()" #Add="ngForm">
+        <button type="button" class="btn-close float-end" (click)="closeModal()"></button>
+        <h3 class="text-center text-dark mb-4">Add Category</h3>
+
+        <div class="mb-3">
+          <label for="name" class="form-label">Category Name</label>
+          <input type="text" class="form-control" name="Name" [(ngModel)]="newCategory.Name" placeholder="e.g., Romantic Roses" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Category Description</label>
+          <input type="text" class="form-control" name="Description" [(ngModel)]="newCategory.Description" placeholder="Short description" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-label">Category Image URL</label>
+          <input type="text" class="form-control" name="Img" [(ngModel)]="newCategory.Img" placeholder="e.g., https://..." required>
+        </div>
+
+        <button type="submit" class="btn custom-btn w-100 mt-3">Add Category</button>
+        <button type="button" class="btn btn-secondary w-100 mt-2" (click)="closeModal()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Category Modal -->
+<div class="modal fade" id="editCategoryModal" tabindex="-1" aria-labelledby="editCategoryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <form class="custom-form shadow" (ngSubmit)="saveEditCategory()" *ngIf="editCategory">
+        <button type="button" class="btn-close float-end" (click)="closeModal()"></button>
+        <h3 class="text-center text-dark mb-4">Edit Category</h3>
+
+        <div class="mb-3">
+          <label for="name" class="form-label">Category Name</label>
+          <input type="text" class="form-control" name="Name" [(ngModel)]="editCategory.Name" placeholder="e.g., Romantic Roses" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Category Description</label>
+          <input type="text" class="form-control" name="Description" [(ngModel)]="editCategory.Description" placeholder="Short description" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-label">Category Image URL</label>
+          <input type="text" class="form-control" name="Img" [(ngModel)]="editCategory.Img" placeholder="e.g., https://..." required>
+        </div>
+
+        <button type="submit" class="btn custom-btn w-100 mt-3">Update Category</button>
+        <button type="button" class="btn btn-secondary w-100 mt-2" (click)="closeModal()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>

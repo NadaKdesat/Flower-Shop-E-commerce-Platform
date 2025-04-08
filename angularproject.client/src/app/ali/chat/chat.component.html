@@ -1,0 +1,35 @@
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+<div class="user-chat-container">
+  <div class="user-header">
+    <img [src]="userAvatar" alt="User Avatar" class="user-avatar">
+    <h2>Your Chat Room</h2>
+  </div>
+
+  <div class="messages-container">
+    <div *ngFor="let message of messages"
+         [ngClass]="{'message-wrapper': true, 'reverse': message.sender === 'admin'}">
+
+      <img [src]="message.sender === 'admin' ? defaultAdminAvatar : userAvatar"
+           class="avatar-image"
+           alt="Sender Image" />
+
+      <div class="message-content" [ngClass]="{'user-style': message.sender === 'user', 'admin-style': message.sender === 'admin'}" >
+        <p>{{ message.message }}</p>
+        <img *ngIf="message.image" [src]="message.image" alt="Message Image" class="message-image">
+      </div>
+    </div>
+  </div>
+
+  <div class="message-input-area">
+    <textarea [(ngModel)]="newMessage" placeholder="Type your message here..."></textarea>
+    <input type="file" (change)="onFileSelected($event)">
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>

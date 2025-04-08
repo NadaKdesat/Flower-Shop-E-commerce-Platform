@@ -1,0 +1,182 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4 flower-heading">
+    <h2 class="main-title mb-0">Products List</h2>
+    <button class="btn btn btn-orange" (click)="openAddModal()">Add Product</button>
+  </div>
+
+  <!-- Table -->
+  <table class="table table-hover table-bordered flower-table shadow-sm">
+    <thead class="table-header">
+      <tr>
+        <th>#</th>
+        <th>Product Name</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Color</th>
+        <th>Price (JD)</th>
+        <th>Availability</th>
+        <th>Tags</th>
+
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Product of ProductContainer">
+        <td>{{ Product.id }}</td>
+        <td>{{ Product.Name }}</td>
+        <td>{{ Product.Description }}</td>
+        <td>{{ Product.CategoryName }}</td>
+        <td>{{ Product.Color }}</td>
+        <td>{{ Product.Price }}</td>
+        <td>
+          <span [ngClass]="{'text-success': Product.Available, 'text-danger': !Product.Available}">
+            {{ Product.Available ? 'Available' : 'Unavailable' }}
+          </span>
+        </td>
+        <td>
+          <span *ngFor="let tag of Product.Tag" class="badge bg-pink me-1">
+            {{ tag }}
+          </span>
+        </td>
+
+        <td>
+          <div class="d-flex justify-content-center gap-2">
+            <button class="btn btn-orange btn-sm" (click)="openEditModal(Product)">Edit</button>
+            <button class="btn btn-red-outline btn-sm" (click)="DeleteProduct(Product.id)">Delete</button>
+          </div>
+        </td>
+
+     
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="ProductContainer?.length === 0" class="text-center mt-4 text-muted">
+    No products found.
+  </div>
+</div>
+
+<!-- Add Product Modal -->
+<div class="modal fade" id="addProductModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <form (ngSubmit)="createProduct()">
+        <button type="button" class="btn-close float-end" (click)="closeModal()"></button>
+        <h3 class="text-center text-dark mb-4">Add Product</h3>
+
+        <div class="mb-3">
+          <label>Name</label>
+          <input type="text" class="form-control" [(ngModel)]="newProduct.Name" name="Name" placeholder="Enter product name" required>
+        </div>
+
+        <div class="mb-3">
+          <label>Description</label>
+          <input type="text" class="form-control" [(ngModel)]="newProduct.Description" name="Description" placeholder="Short description" required>
+        </div>
+
+        <div class="mb-3">
+          <label>Category Name</label>
+          <select class="form-control" [(ngModel)]="newProduct.Categoryid" name="Categoryid" required>
+            <option value="" disabled selected hidden>Select a category</option>
+            <option *ngFor="let cat of CategoryContainer" [value]="cat.id">{{ cat.Name }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label>Color</label>
+          <input type="text" class="form-control" [(ngModel)]="newProduct.Color" name="Color" placeholder="e.g., Red, White" required>
+        </div>
+
+        <div class="mb-3">
+          <label>Price (JD)</label>
+          <input type="number" class="form-control" [(ngModel)]="newProduct.Price" name="Price" placeholder="Enter price in JD" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-label">Product Image URL</label>
+          <input type="text" class="form-control" name="Img" [(ngModel)]="newProduct.Img" placeholder="e.g., https://..." required>
+        </div>
+
+        <div class="mb-3">
+          <label>Availability</label>
+          <select class="form-control" [(ngModel)]="newProduct.Available" name="Available" required>
+            <option value="" disabled selected hidden>Select availability</option>
+            <option [ngValue]="true">Available</option>
+            <option [ngValue]="false">Unavailable</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label>Tags</label>
+          <input type="text" class="form-control" [(ngModel)]="newProduct.TagString" name="Tag" placeholder="e.g., Summer, New, Gift">
+        </div>
+
+
+        <button type="submit" class="btn custom-btn w-100 mt-3">Add Product</button>
+        <button type="button" class="btn btn-secondary w-100 mt-2" (click)="closeModal()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit Product Modal -->
+<div class="modal fade" id="editProductModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <form *ngIf="editProduct" (ngSubmit)="saveEditProduct()">
+        <button type="button" class="btn-close float-end" (click)="closeModal()"></button>
+        <h3 class="text-center text-dark mb-4">Edit Product</h3>
+
+        <div class="mb-3">
+          <label>Name</label>
+          <input type="text" class="form-control" [(ngModel)]="editProduct.Name" name="editName" placeholder="Enter product name" required>
+        </div>
+
+        <div class="mb-3">
+          <label>Description</label>
+          <input type="text" class="form-control" [(ngModel)]="editProduct.Description" name="editDescription" placeholder="Short description" required>
+        </div>
+
+        <div class="mb-3">
+          <label>Category</label>
+          <select class="form-control" [(ngModel)]="editProduct.Categoryid" name="editCategoryid" required>
+            <option value="" disabled hidden>Select a category</option>
+            <option *ngFor="let cat of CategoryContainer" [value]="cat.id">{{ cat.Name }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label>Color</label>
+          <input type="text" class="form-control" [(ngModel)]="editProduct.Color" name="editColor" placeholder="e.g., Red, White" required>
+        </div>
+
+        <div class="mb-3">
+          <label>Price (JD)</label>
+          <input type="number" class="form-control" [(ngModel)]="editProduct.Price" name="editPrice" placeholder="Enter price in JD" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="editImg">Product Image URL</label>
+          <input type="text" class="form-control" name="editImg" [(ngModel)]="editProduct.Img" placeholder="e.g., https://..." required>
+        </div>
+
+        <div class="mb-3">
+          <label>Availability</label>
+          <select class="form-control" [(ngModel)]="editProduct.Available" name="editAvailable" required>
+            <option value="" disabled hidden>Select availability</option>
+            <option [ngValue]="true">Available</option>
+            <option [ngValue]="false">Unavailable</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label>Tags</label>
+          <input type="text" class="form-control" [(ngModel)]="editProduct.TagString" name="editTag" placeholder="e.g., Elegant, Classic">
+        </div>
+
+        <button type="submit" class="btn custom-btn w-100 mt-3">Save Changes</button>
+        <button type="button" class="btn btn-secondary w-100 mt-2" (click)="closeModal()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>

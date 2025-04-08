@@ -1,0 +1,88 @@
+
+<br />
+<br />
+<br />
+
+<div class="breadcrumbs-area position-relative">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <div class="breadcrumb-content position-relative section-content">
+          <h3 class="title-3">Cart Sidebar</h3>
+          <ul>
+            <li><a routerLink="/">Home</a></li>
+            <li>Cart</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="cart && cart.products && cart.products.length > 0; else emptyCart" class="cart-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Message</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of cart.products; let i = index">
+        <td><img [src]="product.img" alt="Product Image" width="80" height="80"></td>
+        <td>{{ product.name || 'Unknown Product' }}</td>
+        <td>{{ product.price || 0 }} JD</td>
+        <td>
+          <div class="quantity-control">
+            <button (click)="decreaseQuantity(product)">-</button>
+            <input type="number" [(ngModel)]="product.quantity" (change)="calculateTotalPrice()" min="1">
+            <button (click)="increaseQuantity(product)">+</button>
+          </div>
+        </td>
+        <td>{{ (product.price || 0) * product.quantity | number: '1.2-2' }} JD</td>
+        <td><textarea [(ngModel)]="product.message" placeholder="Add a message..."></textarea></td>
+        <td><button (click)="removeProduct(product.productId)" class="remove-btn">🗑️</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="total-price">Total Price: {{ totalPrice | number: '1.2-2' }} JD</div>
+
+  <div class="cart-footer">
+    <div class="voucher-box">
+      <h4>🎁 Apply Voucher</h4>
+      <select id="voucherSelect" [(ngModel)]="selectedVoucherId" (change)="applyVoucher()" class="voucher-select">
+        <option value="">No Voucher Applied</option>
+        <option *ngFor="let voucher of vouchers" [value]="voucher.id">
+          {{ voucher.Name }} - {{ voucher.Discount }}% OFF
+        </option>
+      </select>
+      <p class="discount-info">
+        <strong>💸 Price After Discount:</strong>
+        <span>{{ discountedPrice.toFixed(2) }} JD</span>
+      </p>
+    </div>
+
+    <div class="action-buttons">
+      <button (click)="saveCart()" class="save-btn">💾 Save Cart</button>
+      <button (click)="checkout()" class="checkout-btn">🚀 Checkout</button>
+    </div>
+  </div>
+
+
+</div>
+
+<ng-template #emptyCart>
+  <div class="empty-message">Your cart is empty!</div>
+</ng-template>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

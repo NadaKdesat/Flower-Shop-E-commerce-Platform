@@ -1,0 +1,25 @@
+<div class="dashboard-container d-flex">
+
+
+  <!-- Main Content -->
+
+    <div class="container mt-3">
+      <h2 class="main-title mb-4">Feedback List</h2>
+
+      <div class="row">
+        <div class="col-md-4 mb-3" *ngFor="let feedback of feedbackList">
+          <div class="card shadow-sm feedback-card">
+            <div class="card-body">
+              <h5 class="card-title">{{ feedback.Name }}</h5>
+              <p class="text-muted mb-1"><strong>Email:</strong> {{ feedback.Email }}</p>
+              <p class="text-muted mb-2"><strong>Feedback:</strong> {{ feedback.Content }}</p>
+
+              <button class="btn btn-orange btn-sm w-100" (click)="addToTestimonials(feedback)">
+                Add to Testimonials
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

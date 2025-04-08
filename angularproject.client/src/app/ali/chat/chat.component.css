@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: url('https://img.pikbest.com/ai/illus_our/20230414/9288cf199195ec5c2f94cfd5a4a4d4a1.jpg!bw700');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.user-chat-container {
+  width: 85%;
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 25px;
+  background: linear-gradient(135deg, #FFF0F3, #FDE7F0);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.user-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #E72463;
+}
+
+.messages-container {
+  max-height: 500px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding-right: 5px;
+}
+
+.message-wrapper {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.message-content {
+    display:flex;
+  max-width: 65%;
+  padding: 12px;
+  border-radius: 12px;
+  margin: 0 10px;
+}
+
+.user-style {
+  background-color: #ffe4ec;
+  color: #333;
+}
+
+.admin-style {
+  background-color: #e72463;
+  color: white;
+}
+
+.avatar-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.message-image {
+  max-width: 100%;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.message-input-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+  .message-input-area textarea {
+    width: 80%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    resize: none;
+  }
+
+  .message-input-area button {
+    padding: 12px 18px;
+    background-color: #E72463;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+    .message-input-area button:hover {
+      background-color: #c91e56;
+    }

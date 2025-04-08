@@ -1,0 +1,118 @@
+/* Title */
+.main-title {
+  color: #E72463;
+  font-weight: bold;
+}
+
+/* Form / Modal Box Background */
+.form-box,
+.modal-content {
+  background-color: #FCEFF6;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Custom Orange Button */
+.btn-orange {
+  background-color: #E72463;
+  color: white;
+  border: none;
+  margin-right: 0.5vw;
+  margin: 0.5vw 0.5vw 0.5vw 0.5vw;
+  padding: 8px;
+}
+
+  .btn-orange:hover {
+    background-color: #BF2C5C;
+    color: white;
+  }
+
+/* Custom Red Outline Button */
+.btn-red-outline {
+  border: 2px solid #dc3545;
+  color: #dc3545;
+  background-color: transparent;
+  margin-right: 0.5vw;
+    margin: 0.5vw 0.5vw 0.5vw 0.5vw;
+  padding: 8px;
+}
+
+  .btn-red-outline:hover {
+    background-color: #BF2C5C;
+    color: white;
+  }
+
+/* Table styling */
+.table-striped-custom tbody tr:nth-child(odd) {
+  background-color: #FCEFF6;
+}
+
+.table-striped-custom tbody tr:nth-child(even) {
+  background-color: white;
+}
+
+.table thead {
+  background-color: #E72463;
+  color: white;
+}
+.dashboard-container {
+  height: 100vh;
+  background-color: white;
+/*  overflow: hidden;*/
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 240px;
+  background: linear-gradient(180deg, #E72463, #bf2c5c);
+  min-height: 90vh;
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  bottom: 10px;
+  color: white;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.sidebar-header img {
+  border-radius: 50%;
+  background-color: #fff;
+  padding: 5px;
+}
+
+.sidebar .nav-link {
+  color: #fceef3;
+  padding: 12px 20px;
+  font-size: 15px;
+  transition: background 0.2s ease;
+  display: flex;
+  align-items: center;
+  border-radius: 25px 0 0 25px;
+  margin-bottom: 10px;
+}
+
+  .sidebar .nav-link:hover,
+  .sidebar .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+
+  .sidebar .nav-link i {
+    font-size: 18px;
+  }
+
+/* Main Content */
+.content {
+  margin-left: 240px;
+/*  overflow-y: auto;*/
+}
+.btn-secondary {
+  background-color: dimgrey;
+  margin: 0.5vw 0.5vw 0.5vw 0.5vw;
+  padding: 8px;
+}

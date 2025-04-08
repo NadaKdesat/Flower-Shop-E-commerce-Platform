@@ -1,0 +1,54 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+/* تعديل الكود الخاص بالـ Footer */
+.footer-area {
+  flex-shrink: 0;
+  margin-top: auto; /* لضمان أن الـ Footer يكون في أسفل الصفحة دائماً */
+  background-color: #f0f0f0;
+}
+.single-footer-widget{
+    padding-top:60px!important;
+    margin-bottom:-50px!important;
+}
+img {
+  margin-top: -74px;
+  max-width: 100%;
+}
+.footer-area .footer-widget-area {
+  background-color: #ffc0cb5e !important;
+}
+
+.footer-area .footer-widget-area {
+  padding: 0px 0px 20px 0px;
+  background-color: #1b1b1b;
+  color: #ffffff;
+}
+
+.footer-area .single-footer-widget .widget-list li a {
+  color: #E72463;
+}
+
+.footer-area[_ngcontent-ng-c761159290] .footer-widget-area[_ngcontent-ng-c761159290] {
+  color: #E72463;
+}
+
+.footer-copyright-area .container {
+  margin-top: 10px;
+}
+
+.footer-copyright-area {
+  background-color: #E72463;
+}

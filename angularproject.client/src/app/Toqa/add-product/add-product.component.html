@@ -1,0 +1,50 @@
+<div class="bg container-fluid">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form class="custom-form shadow" #Add="ngForm" (ngSubmit)="AddProduct(Add.value)">
+          <h3 class="text-center text-dark mb-4">🌼 Add Product</h3>
+
+          <!-- Product Name -->
+          <div class="mb-3">
+            <label for="name" class="form-label">Product Name</label>
+            <input type="text" class="form-control" name="Name" ngModel placeholder="e.g., Romantic Roses" required>
+          </div>
+
+          <!-- Description -->
+          <div class="mb-3">
+            <label for="description" class="form-label">Product Description</label>
+            <input type="text" class="form-control" name="Description" ngModel placeholder="Short description" required>
+          </div>
+
+          <!-- Image URL -->
+          <div class="mb-3">
+            <label for="image" class="form-label">Product Image URL</label>
+            <input type="text" class="form-control" name="Img" ngModel placeholder="e.g., https://..." required>
+          </div>
+
+          <!-- Availability Dropdown -->
+          <div class="mb-3">
+            <label for="availability" class="form-label">Availability</label>
+            <select class="form-select" name="Availability" ngModel required>
+              <option value="" disabled selected>Select availability</option>
+              <option value="Available">Available</option>
+              <option value="Not Available">Not Available</option>
+            </select>
+          </div>
+
+          <!-- Tags Input -->
+          <div class="mb-3">
+            <label for="tags" class="form-label">Search Tags</label>
+            <input type="text" class="form-control" name="Tags" ngModel placeholder="e.g., red, roses, valentine, romantic">
+            <div class="form-text">Separate tags with commas. These help users find your product.</div>
+          </div>
+
+          <!-- Buttons -->
+          <button type="submit" class="btn custom-btn w-100 mt-3">Add Product</button>
+          <a class="btn custom-btn w-100 mt-3" routerLink="/AllProducts">Back to all Products</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

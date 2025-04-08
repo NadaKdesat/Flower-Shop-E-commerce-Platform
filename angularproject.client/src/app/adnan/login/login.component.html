@@ -1,0 +1,51 @@
+<!-- إضافة الفيديو كخلفية -->
+<div class="video-background">
+  <video autoplay muted loop id="bgVideo">
+    <source src="../../../assets/vedio/flowersFall.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+<br />
+<br />
+<!-- تصميم الفورم كما هو -->
+<div class="container mt-5 mb-5 position-relative">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-5">
+      <div class="card shadow-lg border-0 rounded-lg">
+        <div class="card-body p-5" style="background-color: #f9f9f9;">
+          <h4 class="card-title text-center mb-4" style="color: #d32f2f;">Login</h4>
+          <form #login="ngForm" (ngSubmit)="getData(login.value)">
+            <div class="form-group mb-3">
+              <input type="email" class="form-control" id="emailInput" placeholder="Enter email" name="Email" ngModel required>
+            </div>
+            <div class="form-group mb-2">
+              <input type="password" class="form-control" id="passwordInput" placeholder="Enter password" name="password" ngModel required>
+            </div>
+            <!-- رابط Forget Password -->
+            <div class="form-group mb-4 text-end">
+              <a routerLink="/reset_pass" style="color: #d32f2f; text-decoration: none; font-size: 14px;">
+
+                Forgot Password?
+              </a>
+
+            </div>
+            <button type="submit" class="btn w-100 text-white" style="background-color: #d32f2f; padding: 13px;">
+              Login
+            </button>
+            <div class="auth-links">
+              <a routerLink="/loginPhoto">Log in by face</a>
+              <a routerLink="/register">Create Account</a>
+            </div>
+
+
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<br />

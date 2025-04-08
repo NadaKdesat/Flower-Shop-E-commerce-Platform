@@ -1,0 +1,105 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* لتوسيط المنتجات داخل الصفحة */
+  margin: 0;
+}
+
+.col-md-3, .col-sm-6 {
+  flex: 0 0 23%; /* حجم المنتج يكون 23% ليظهر أربعة منتجات في الصف الواحد */
+  margin: 0 10px 20px 10px; /* مسافة بسيطة بين كل منتج */
+}
+
+.single-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+  .single-product:hover {
+    transform: scale(1.05);
+  }
+
+.product-image img {
+  width: 100%;
+  height: 231px; /* نفس ارتفاع الصور */
+  object-fit: cover;
+}
+
+.product-content {
+  text-align: center;
+  padding: 15px;
+}
+
+.product-title a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.price {
+  color: red;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  background-color: #e72463;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+  .btn-primary:hover {
+    background-color: #E72463;
+  }
+.btn-explore {
+  display: inline-block;
+  background-color: #ff6f61; /* اللون الأساسي (مائل للوردي) */
+  color: white; /* النص باللون الأبيض */
+  padding: 12px 24px; /* المسافة حول النص */
+  font-size: 16px; /* حجم الخط */
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid #ff6f61; /* نفس اللون للحدود */
+  border-radius: 25px; /* الحواف مستديرة */
+  text-decoration: none; /* إزالة الخط السفلي */
+  transition: all 0.3s ease-in-out; /* تأثيرات الحركة */
+  cursor: pointer; /* تغيير المؤشر إلى يد */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* ظلال خفيفة */
+  outline: none; /* إزالة التحديد عند الضغط */
+}
+
+  .btn-explore:hover {
+    background-color: #ff3e2f; /* تغيير اللون عند المرور بالماوس */
+    border-color: #ff3e2f; /* تغيير لون الحدود عند المرور */
+    transform: scale(1.1); /* تكبير الزر عند المرور */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* زيادة الظلال عند المرور */
+  }
+
+  .btn-explore:active {
+    transform: scale(1.05); /* تقليص الحجم عند الضغط */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); /* تقليل الظلال عند الضغط */
+  }
+
+  .btn-explore:focus {
+    outline: none; /* إزالة التحديد عند الضغط */
+  }

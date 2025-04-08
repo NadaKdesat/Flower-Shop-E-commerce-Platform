@@ -1,0 +1,103 @@
+.dashboard-container {
+  height: 100vh;
+  background-color: white;
+/*    overflow: hidden;*/
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 240px;
+  background: linear-gradient(180deg, #E72463, #bf2c5c);
+  min-height: 90vh;
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  bottom: 10px;
+  color: white;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.sidebar-header img {
+  border-radius: 50%;
+  background-color: #fff;
+  padding: 5px;
+}
+
+.sidebar .nav-link {
+  color: #fceef3;
+  padding: 12px 20px;
+  font-size: 15px;
+  transition: background 0.2s ease;
+  display: flex;
+  align-items: center;
+  border-radius: 25px 0 0 25px;
+  margin-bottom: 10px;
+}
+
+  .sidebar .nav-link:hover,
+  .sidebar .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+
+  .sidebar .nav-link i {
+    font-size: 18px;
+  }
+
+/* Main Content */
+.content {
+  margin-left: 240px;
+  /*  overflow-y: auto;*/
+}
+.bg-pink {
+  background-color: #E72463 !important;
+}
+
+.text-white {
+  color: #fff !important;
+}
+
+canvas {
+  background: #fff;
+  border-radius: 12px;
+}
+
+.list-group-item {
+  background-color: #fceff6;
+  border: none;
+}
+
+.card {
+  border: 1px solid #f7dbe4; /* ✅ Soft pink border */
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    border-color: #eebfd0; /* Slightly darker on hover */
+  }
+  
+canvas {
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+}
+.card canvas {
+  margin: 0 auto;
+}
+.bg-pink {
+  background-color: #E72463 !important;
+}
+
+.border-start {
+  border-left: 4px solid #E72463 !important;
+}

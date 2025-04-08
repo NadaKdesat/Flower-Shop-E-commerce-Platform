@@ -1,0 +1,127 @@
+<div class="dashboard-container d-flex">
+
+  <!-- Main Content -->
+  <div class="container mt-3">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="main-title mb-0">Voucher List</h2>
+        <button class="btn btn-orange" (click)="openCreateModal()">Create Voucher</button>
+      </div>
+
+      <!-- Voucher Table -->
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped-custom">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Discount</th>
+              <th>Users</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let voucher of vouchers">
+              <td>{{ voucher.id }}</td>
+              <td>{{ voucher.Name }}</td>
+              <td>{{ voucher.Discount }}%</td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ voucher.Userid.length }} User(s)
+                  </button>
+                  <ul class="dropdown-menu p-2" style="max-height: 150px; overflow-y: auto; width: max-content;">
+                    <li *ngFor="let userId of voucher.Userid" class="dropdown-item">
+                      <strong>{{ userId }}</strong> - {{ getUserEmailById(userId) }}
+                    </li>
+                  </ul>
+                </div>
+              </td>
+              <td>
+                <button class="btn btn-orange btn-sm me-2" (click)="openEditModal(voucher)">Edit</button>
+                <button class="btn btn-red-outline btn-sm" (click)="confirmDelete(voucher.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Edit Voucher Modal -->
+      <div class="modal fade" id="editVoucherModal" tabindex="-1" aria-labelledby="editVoucherModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title main-title" id="editVoucherModalLabel">Edit Voucher</h5>
+              <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+              <form *ngIf="editVoucher" (ngSubmit)="saveEditVoucher()">
+                <div class="form-group mb-2">
+                  <label for="editVoucherName">Name</label>
+                  <input type="text" class="form-control" id="editVoucherName"
+                         [(ngModel)]="editVoucher.Name" name="Name" required>
+                </div>
+                <div class="form-group mb-2">
+                  <label for="editVoucherDiscount">Discount (%)</label>
+                  <input type="number" class="form-control" id="editVoucherDiscount"
+                         [(ngModel)]="editVoucher.Discount" name="Discount" min="0" required>
+                </div>
+                <div class="form-group mb-2">
+                  <label for="editVoucherUsers">Select Users</label>
+                  <select class="form-control" id="editVoucherUsers" multiple [(ngModel)]="editVoucher.Userid" name="Userid">
+                    <option *ngFor="let user of users" [value]="user.id">{{ user.Email }}</option>
+                  </select>
+                  <small class="form-text text-muted">Hold Ctrl (Windows) or Command (Mac) to select multiple users.</small>
+                  <button type="button" class="btn btn-sm btn-outline-secondary mt-2" (click)="selectAllUsersForEdit()">Select All Users</button>
+                </div>
+
+                <button type="submit" class="btn btn-orange mt-3">Save Changes</button>
+                <button type="button" class="btn btn-secondary mt-3" (click)="closeModal()">Cancel</button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Create Voucher Modal -->
+      <div class="modal fade" id="createVoucherModal" tabindex="-1" aria-labelledby="createVoucherModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title main-title" id="createVoucherModalLabel">Create New Voucher</h5>
+              <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+              <form (ngSubmit)="createVoucher()">
+                <div class="form-group mb-2">
+                  <label for="voucherName">Name</label>
+                  <input type="text" class="form-control" id="voucherName" [(ngModel)]="newVoucher.Name" name="Name" required>
+                </div>
+                <div class="form-group mb-2">
+                  <label for="voucherDiscount">Discount (%)</label>
+                  <input type="number" class="form-control" id="voucherDiscount" [(ngModel)]="newVoucher.Discount" name="Discount" min="0" required>
+                </div>
+                <div class="form-group mb-2">
+                  <label for="voucherUsers">Select Users</label>
+                  <select class="form-control" id="voucherUsers" multiple [(ngModel)]="newVoucher.Userid" name="Userid">
+                    <option *ngFor="let user of users" [value]="user.id">{{ user.Email }}</option>
+                  </select>
+                  <button type="button" class="btn btn-sm btn-outline-secondary mt-2" (click)="selectAllUsers()">Select All Users</button>
+                </div>
+
+                <button type="submit" class="btn btn-orange mt-3">Create Voucher</button>
+                <button type="button" class="btn btn-secondary mt-3" (click)="closeModal()">Cancel</button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

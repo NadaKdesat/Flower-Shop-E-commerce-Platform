@@ -1,0 +1,192 @@
+/* أنميشنات أساسية مبسطة */
+@keyframes box-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes lid-open {
+  0% {
+    transform: rotateX(0);
+  }
+
+  100% {
+    transform: rotateX(-120deg) translateY(-50px);
+  }
+}
+
+/* هيكل الصندوق ثلاثي الأبعاد */
+.box-wrapper {
+  position: relative;
+  perspective: 1200px;
+  margin: 100px auto;
+  width: 400px;
+  height: 400px;
+  filter: drop-shadow(0 10px 30px rgba(146,84,105,0.2));
+}
+
+.box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  transition: all 1s ease;
+  animation: box-float 4s ease-in-out infinite;
+}
+
+/* تصميم الصندوق النباتي */
+.lid {
+  position: absolute;
+  width: 100%;
+  height: 25%;
+  background: linear-gradient(160deg, rgba(255,240,245,0.9) 20%, rgba(255,228,225,0.8) 50%, rgba(255,248,240,0.7) 80%);
+  transform-origin: bottom;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px 12px 0 0;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 15px 40px rgba(146,84,105,0.15);
+}
+
+.front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #fff0f5 0%, #ffe4e1 30%, #ffd7e9 100%);
+  border-radius: 12px;
+  transform: translateZ(40px);
+  overflow: hidden;
+  border: 2px solid #ffe4e6;
+  &::before
+
+{
+  content: "🌹";
+  font-size: 6em;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 35%;
+  filter: drop-shadow(0 5px 10px rgba(255,192,203,0.5));
+  animation: box-float 3s ease-in-out infinite;
+}
+
+&::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient( 45deg, transparent 0 15px, rgba(255,255,255,0.3) 15px 30px );
+  mix-blend-mode: soft-light;
+}
+
+}
+
+/* تأثير الفتح المبسط */
+.box.opened {
+  animation: none;
+  transform: scale(1.1);
+  .lid
+
+{
+  transform: rotateX(-120deg) translateY(-50px);
+  box-shadow: 0 10px 30px rgba(146,84,105,0.2);
+}
+
+}
+
+/* نافذة الخصم النباتية */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 251, 245, 0.98);
+  padding: 30px 50px;
+  border-radius: 25px;
+  box-shadow: 0 20px 50px rgba(146,84,105,0.15);
+  border: 2px solid #ffe4e6;
+  animation: popup-entrance 0.6s ease-out;
+  &::before
+
+{
+  content: "";
+  position: absolute;
+  inset: -5px;
+  background: linear-gradient(45deg, #ffe4e6, #fff0f5, #fffaf0);
+  z-index: -1;
+  border-radius: inherit;
+}
+
+}
+
+/* زر الفتح النباتي */
+.open-btn {
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 40px;
+  font-size: 1.5em;
+  background: linear-gradient(45deg, #ffb3c1, #ff758f 70%, #ff85a2);
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 35px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(255,131,149,0.3);
+  &:hover:not([disabled])
+
+{
+  transform: translateX(-50%) scale(1.1);
+  letter-spacing: 2px;
+  background: linear-gradient(45deg, #ff758f, #ffb3c1 70%, #ff85a2);
+}
+
+&[disabled] {
+  opacity: 0.7;
+  filter: grayscale(0.3);
+}
+
+}
+
+/* تحسينات الحركة */
+@keyframes popup-entrance {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+
+  80% {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+  .box-wrapper {
+    width: 70vw;
+    height: 70vw;
+  }
+
+  .front::before {
+    font-size: 4em;
+  }
+
+  .popup {
+    width: 80%;
+    padding: 20px;
+  }
+
+  .open-btn {
+    font-size: 1.2em;
+    padding: 12px 25px;
+  }
+}
